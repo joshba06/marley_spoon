@@ -1,0 +1,20 @@
+<% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(no_links: true, hard_wrap: true), extensions = {}) %>
+
+<%= link_to "Back to all recipes", recipes_path%>
+
+<h1><%= @recipe.title %></h1>
+Description:
+
+<%= render inline: markdown.render(@recipe.description)  %>
+<ul>
+
+  <li>Your chef: <%= @recipe.chef %></li>
+
+  <li>Tags: <%= @recipe.tags %>
+  </li>
+
+  <li>Photo: <%= @recipe.image_url%></li>
+
+  <img src=<%="#{@recipe.image_url}"%> alt="">
+
+</ul>

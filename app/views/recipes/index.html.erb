@@ -1,0 +1,18 @@
+<div class="container-index">
+  <div class="page-actions">
+  </div>
+  <div class="recipe-cards">
+    <h1>Our weekly menu</h1>
+
+
+  </div>
+</div>
+
+<ul>
+  <% @recipies.each do |recipe| %>
+    <li>
+    <%= recipe.title %> | <%= recipe.tags ? recipe.tags : "no-tags" %>
+    <%= link_to "Details", recipe_path(recipe.id) %>
+    </li>
+  <% end %>
+</ul>

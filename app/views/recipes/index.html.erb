@@ -1,18 +1,23 @@
 <div class="container-index">
   <div class="page-actions">
   </div>
-  <div class="recipe-cards">
+  <div class="page-information">
     <h1>Our weekly menu</h1>
+  </div>
+  <div class="cards">
 
+    <% @recipies.each do |recipe| %>
+
+      <div class="recipe-card">
+        <div class="img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=recipe.image_url%>)"></div>
+        <div class="info">
+          <%= recipe.title%><br>
+          <p><%= link_to "View recipe", recipe_path(recipe.id)%></p>
+        </div>
+      </div>
+
+
+    <% end %>
 
   </div>
 </div>
-
-<ul>
-  <% @recipies.each do |recipe| %>
-    <li>
-    <%= recipe.title %> | <%= recipe.tags ? recipe.tags : "no-tags" %>
-    <%= link_to "Details", recipe_path(recipe.id) %>
-    </li>
-  <% end %>
-</ul>

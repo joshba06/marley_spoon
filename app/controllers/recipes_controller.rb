@@ -7,6 +7,12 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    if /youtube.com\/watch\?v=\w+\)/.match(@recipe.description)
+      @video_id = /youtube.com\/watch\?v=\w+\)/.match(@recipe.description)[0].split("=").last.split(")").first
+      subtract_string = /\[VIDEO]\(https:\/\/www.youtube.com\/watch?\?v=\w+\)/.match(@recipe.description)[0]
+      @recipe.description.slice! subtract_string
+    end
+
   end
 
   private

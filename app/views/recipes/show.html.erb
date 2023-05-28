@@ -27,6 +27,11 @@
       <div class="description">
         <h2>Description</h2>
         <%= render inline: markdown.render(@recipe.description)  %>
+        <% if @video_id %>
+          <div class="video">
+            <iframe width="640px" height="480px" src="http://www.youtube.com/embed/<%=@video_id%>" frameborder="0"></iframe>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

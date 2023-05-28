@@ -20,4 +20,8 @@
     <% end %>
 
   </div>
+
+  <div class="update-info">
+    Last update: <%= @time_last_recipe_update == "Never" ? "Never" : "#{@time_last_recipe_update} minutes ago." %>
+  </div>
 </div>

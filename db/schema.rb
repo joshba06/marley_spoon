@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_26_150401) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_28_134629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_150401) do
     t.string "chef", null: false
     t.text "image_url", null: false
     t.string "contentful_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sidekiq_logs", force: :cascade do |t|
+    t.string "job_name", null: false
+    t.string "items_added", default: [], null: false, array: true
+    t.string "items_deleted", default: [], null: false, array: true
+    t.datetime "job_performed", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

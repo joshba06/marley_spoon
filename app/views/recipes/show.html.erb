@@ -1,0 +1,38 @@
+<% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(no_links: true, hard_wrap: true), extensions = {}) %>
+<div class="container-show">
+
+  <div class="page-actions">
+    <%= link_to "<- Back to all recipes", recipes_path, class: "btn btn-outline-primary"%>
+  </div>
+
+  <div class="page-information">
+    <h1><%= @recipe.title %></h1>
+  </div>
+
+  <div class="recipe">
+    <div class="img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=@recipe.image_url%>)"></div>
+
+    <div class="text-content">
+      <div class="chef">
+        with chef <strong><%= @recipe.chef %></strong>
+      </div>
+      <div class="tags">
+        <% @recipe.tags.each do |tag| %>
+          <div class="tag">
+            <%= tag %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="description">
+        <h2>Description</h2>
+        <%= render inline: markdown.render(@recipe.description)  %>
+        <% if @video_id %>
+          <div class="video">
+            <iframe width="640px" height="480px" src="http://www.youtube.com/embed/<%=@video_id%>" frameborder="0"></iframe>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+.container-index, .container-show {
+  background-color: #F4F4F4;
+}
+
+.page-actions {
+  width: 80vw;
+  padding-top: 10px;
+  margin: 0px auto;
+}
+
+.page-information {
+  width: 80vw;
+  margin: 0px auto;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.cards {
+  width: 80vw;
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding-top: 20px;
+}
+
+.recipe-card {
+  height: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  .img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .info {
+    padding-top: 10px;
+    width: 80%;
+    margin: 0px auto;
+    height: 100px;
+    text-align: center;
+  }
+
+}
+
+.recipe {
+  width: 80vw;
+  margin: 0px auto;
+
+  .img {
+    margin: 0px auto;
+    height: 50vh;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+  }
+  .text-content {
+    width: 100%;
+    .chef {
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+    }
+    .tags {
+      width: 100%;
+      display: flex;
+      .tag {
+        background-color: #377483;;
+        color: white;
+        border-radius: 2px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-right: 10px;
+      }
+    }
+    .description {
+      width: 100%;
+      margin-top: 20px;
+      padding-top: 10px;
+      margin-bottom: 10px;
+      border-top: 1px solid grey;
+    }
+  }
+}
+
+
+.update-info{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: grey;
+  font-size: 1rem;
+}
+
+.video {
+  margin: 0px auto;
+  width: 50%;
+}

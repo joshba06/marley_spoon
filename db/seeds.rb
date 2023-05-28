@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Recipe.destroy_all
+SidekiqLog.destroy_all
 10.times do
   available_tags = %W(vegan gluten-free no-diary vegetarian top-rated)
   title = "#{Faker::Emotion.adjective.capitalize} #{Faker::Food.dish}"

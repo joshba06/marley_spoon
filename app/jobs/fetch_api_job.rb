@@ -12,6 +12,7 @@ class FetchApiJob < ApplicationJob
     puts "Fetching recipes from API"
     downloaded_recipies = Recipe.render_all
     downloaded_recipies.each { |recipe|  update_recipe_in_database(recipe) }
+    remove_duplicates
     cleanup_database(downloaded_recipies)
     puts "Completed fetching recipes"
     SidekiqLog.create(job_name: "all_recipes_fetch", job_performed: Time.now.utc)
@@ -68,5 +69,17 @@ class FetchApiJob < ApplicationJob
     end
   end
 
+  def remove_duplicates()
+    # If, for some reason, there are duplicated in the database, remove older version
+    Recipe.all.each do |recipe|
+      num_duplicates = Recipe.where(contentful_id: recipe.contentful_id).length
+      if num_duplicates >= 2
+        Recipe.where(contentful_id: recipe.contentful_id).order(updated_at: :desc).each_with_index do |dup_recipe, index|
+          dup_recipe.destroy if index >= 1
+          puts "Removed duplicate for recipe: #{dup_recipe}"
+        end
+      end
+    end
+  end
 
 end
